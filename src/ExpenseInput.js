@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { View, TextInput, Button, StyleSheet } from "react-native";
+import { ExpenseType } from "./components/ExpenseType";
 
 const ExpenseInput = () => {
   const [expenseType, setExpenseType] = useState("");
@@ -16,13 +17,7 @@ const ExpenseInput = () => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter expense type"
-        onChangeText={setExpenseType}
-        value={expenseType}
-        blurOnSubmit={false}
-      />
+      <ExpenseType value={expenseType} onChangeText={setExpenseType} />
       <TextInput
         style={styles.input}
         placeholder="Enter expense name"
