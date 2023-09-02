@@ -2,17 +2,19 @@ import { useState } from "react";
 import { View, TextInput, Button, StyleSheet } from "react-native";
 import { ExpenseType } from "./components/ExpenseType";
 
-const ExpenseInput = () => {
+const ExpenseInput = (props) => {
   const [expenseType, setExpenseType] = useState("");
   const [expenseCategory, setExpenseCategory] = useState("");
   const [expenseConcept, setExpenseConcept] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
 
   const handlePress = () => {
-    console.log("Expense type", expenseType);
-    console.log("Expense category", expenseCategory);
-    console.log("Expense concept", expenseConcept);
-    console.log("Expense amount", expenseAmount);
+    props.onNewExpense({
+      type: expenseType,
+      category: expenseCategory,
+      concept: expenseConcept,
+      amount: expenseAmount,
+    });
   };
 
   return (
