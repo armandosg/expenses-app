@@ -52,7 +52,7 @@ export default function App() {
   const total = data.reduce((total, expense) => total + expense.amount, 0);
 
   return (
-    <View>
+    <View style={{ flexGrow: 1 }}>
       <ExpenseInput onNewExpense={handleNewExpense} />
       <ExpensesList data={data} />
       <ExpensesListTotal total={total} />

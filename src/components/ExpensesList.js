@@ -2,19 +2,41 @@ import { View, Text, FlatList, StyleSheet } from "react-native";
 
 const ExpenseItem = (props) => {
   return (
-    <View style={styles.item}>
-      <Text style={styles.itemText}>{props.item.type}</Text>
-      <Text style={styles.itemText}>{props.item.category}</Text>
-      <Text style={styles.itemText}>{props.item.concept}</Text>
-      <Text style={styles.itemText}>{props.item.amount}</Text>
-      <Text style={styles.itemText}>{props.item.date}</Text>
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: 10,
+        borderBottomWidth: 1,
+      }}
+    >
+      <View>
+        <Text style={{ fontSize: "1.2rem", padding: 2 }}>
+          {props.item.concept}
+        </Text>
+        <Text style={{ padding: 2 }}>{`Tipo: ${props.item.type}`}</Text>
+        <Text
+          style={{ padding: 2 }}
+        >{`Categoria: ${props.item.category}`}</Text>
+        <Text style={{ padding: 2 }}>{props.item.date}</Text>
+      </View>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "flex-end",
+        }}
+      >
+        <Text style={{ fontSize: "1.2rem", padding: 2 }}>
+          {`$${props.item.amount.toFixed(2)}`}
+        </Text>
+      </View>
     </View>
   );
 };
 
 const ExpensesList = (props) => {
   return (
-    <View style={styles.container}>
+    <View>
       <FlatList
         data={props.data}
         renderItem={(item) => <ExpenseItem item={item.item} />}
@@ -23,20 +45,4 @@ const ExpensesList = (props) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 10,
-  },
-  item: {
-    flexDirection: "row",
-    backgroundColor: "#ccc",
-    marginTop: 5,
-  },
-  itemText: {
-    padding: 5,
-  },
-});
-
 export { ExpensesList };
