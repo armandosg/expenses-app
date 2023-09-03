@@ -2,6 +2,7 @@ import { useState } from "react";
 import { View, TextInput, Button, StyleSheet } from "react-native";
 import { ExpenseType } from "./components/ExpenseType";
 import { ExpenseDateInput } from "./components/ExpenseDateInput";
+import { typeSchema, amountSchema, dateSchema } from "./schemas";
 
 const ExpenseInput = (props) => {
   const [expenseType, setExpenseType] = useState("");
@@ -9,10 +10,21 @@ const ExpenseInput = (props) => {
   const [expenseConcept, setExpenseConcept] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
   const [expenseDate, setExpenseDate] = useState(
-    new Intl.DateTimeFormat().format(new Date())
+    new Intl.DateTimeFormat(undefined, {
+      day: "2-digit",
+      month: "2-digit",
+      year: "2-digit",
+    }).format(new Date())
   );
 
   const handlePress = () => {
+    const parseType = typeSchema.safeParse(expenseType);
+    const parseAmount = amountSchema.safeParse(expenseAmount);
+    const parseDate = dateSchema.safeParse(expenseDate);
+    if (!parseType.success || !parseAmount.success || !parseDate.success) {
+      return;
+    }
+
     props.onNewExpense({
       type: expenseType,
       category: expenseCategory,
