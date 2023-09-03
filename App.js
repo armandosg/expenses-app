@@ -10,6 +10,7 @@ const DATA = [
     category: "Ropa",
     concept: "Pantalon",
     amount: 700,
+    date: new Intl.DateTimeFormat().format(new Date()),
   },
   {
     id: "2",
@@ -17,6 +18,7 @@ const DATA = [
     category: "Hogar",
     concept: "Internet",
     amount: 500,
+    date: new Intl.DateTimeFormat().format(new Date()),
   },
   {
     id: "3",
@@ -24,6 +26,7 @@ const DATA = [
     category: "Entretenimiento",
     concept: "Netflix",
     amount: 300,
+    date: new Intl.DateTimeFormat().format(new Date()),
   },
   {
     id: "4",
@@ -31,6 +34,7 @@ const DATA = [
     category: "Hogar",
     concept: "Luz",
     amount: 1000,
+    date: new Intl.DateTimeFormat().format(new Date()),
   },
 ];
 

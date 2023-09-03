@@ -7,6 +7,7 @@ const ExpenseItem = (props) => {
       <Text style={styles.itemText}>{props.item.category}</Text>
       <Text style={styles.itemText}>{props.item.concept}</Text>
       <Text style={styles.itemText}>{props.item.amount}</Text>
+      <Text style={styles.itemText}>{props.item.date}</Text>
     </View>
   );
 };

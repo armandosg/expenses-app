@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { View, TextInput, Button, StyleSheet } from "react-native";
 import { ExpenseType } from "./components/ExpenseType";
+import { ExpenseDateInput } from "./components/ExpenseDateInput";
 
 const ExpenseInput = (props) => {
   const [expenseType, setExpenseType] = useState("");
   const [expenseCategory, setExpenseCategory] = useState("");
   const [expenseConcept, setExpenseConcept] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
+  const [expenseDate, setExpenseDate] = useState(
+    new Intl.DateTimeFormat().format(new Date())
+  );
 
   const handlePress = () => {
     props.onNewExpense({
@@ -14,6 +18,7 @@ const ExpenseInput = (props) => {
       category: expenseCategory,
       concept: expenseConcept,
       amount: expenseAmount,
+      date: expenseDate,
     });
   };
 
@@ -40,6 +45,11 @@ const ExpenseInput = (props) => {
         onChangeText={setExpenseAmount}
         value={expenseAmount}
         keyboardType="numeric"
+      />
+      <ExpenseDateInput
+        style={styles.input}
+        value={expenseDate}
+        onChangeText={setExpenseDate}
       />
       <Button title="Add" onPress={handlePress} />
     </View>
