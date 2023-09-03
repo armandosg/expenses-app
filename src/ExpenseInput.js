@@ -17,7 +17,7 @@ const ExpenseInput = (props) => {
       type: expenseType,
       category: expenseCategory,
       concept: expenseConcept,
-      amount: expenseAmount,
+      amount: Number(expenseAmount),
       date: expenseDate,
     });
   };

@@ -1,7 +1,8 @@
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { ExpenseInput } from "./src/ExpenseInput";
 import { ExpensesList } from "./src/components/ExpensesList";
 import { useState } from "react";
+import { ExpensesListTotal } from "./src/components/ExpensesListTotal";
 
 const DATA = [
   {
@@ -48,10 +49,13 @@ export default function App() {
     ]);
   };
 
+  const total = data.reduce((total, expense) => total + expense.amount, 0);
+
   return (
     <View>
       <ExpenseInput onNewExpense={handleNewExpense} />
       <ExpensesList data={data} />
+      <ExpensesListTotal total={total} />
     </View>
   );
 }
