@@ -1,14 +1,21 @@
-import { TextInput, StyleSheet } from "react-native";
+import { TextInput, StyleSheet, View, Text } from "react-native";
 
 const ExpenseType = (props) => {
   return (
-    <TextInput
-      style={styles.input}
-      placeholder="Enter expense type"
-      onChangeText={props.onChangeText}
-      value={props.value}
-      blurOnSubmit={false}
-    />
+    <View>
+      <TextInput
+        style={styles.input}
+        placeholder="Enter expense type"
+        onChangeText={props.onChangeText}
+        value={props.value}
+        blurOnSubmit={false}
+      />
+      {!props.isValid && (
+        <Text style={{ color: "red" }}>
+          {"Type should be one of these values: Variable or Fijo"}
+        </Text>
+      )}
+    </View>
   );
 };
 
