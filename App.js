@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { ExpenseInput } from "./src/ExpenseInput";
 import { ExpensesList } from "./src/components/ExpensesList";
 import { useState } from "react";
